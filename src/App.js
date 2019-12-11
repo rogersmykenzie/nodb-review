@@ -12,14 +12,19 @@ class App extends React.Component {
     super();
     this.state = {
       places: [],
+      favorites: [],
       currentView: "places"
     };
     this.updatePlaces = this.updatePlaces.bind(this);
+    this.updateFavorites = this.updateFavorites.bind(this);
   }
 
   componentDidMount() {
     axios.get("/api/places").then(response => {
       this.setState({ places: response.data });
+    });
+    axios.get("/api/favs").then(response => {
+      this.setState({ favorites: response.data });
     });
   }
 
@@ -27,31 +32,32 @@ class App extends React.Component {
     this.setState({ places: newPlaces });
   }
 
+  updateFavorites(newFavorites) {
+    this.setState({ favorites: newFavorites });
+  }
+
   render() {
-    // if (this.state.currentView === "places") {
-    //   return (
-    //     <div className="App">
-    //       <button>Favorites</button>
-    //       <button>Places</button>
-    //       <AddPlace updatePlaces={this.updatePlaces} />
-    //       <PlacesView places={this.state.places} />
-    //     </div>
-    //   );
-    // } else if (this.state.currentView === "favs") {
-    //   // return <PlacesView />;
-    //   return <h1>Favorites List</h1>;
-    // }
     return (
       <div>
-        <button>Favorites</button>
-        <button>Places</button>
+        <button onClick={() => this.setState({ currentView: "favs" })}>
+          Favorites
+        </button>
+        <button onClick={() => this.setState({ currentView: "places" })}>
+          Places
+        </button>
         {this.state.currentView === "places" ? (
           <div className="App">
             <AddPlace updatePlaces={this.updatePlaces} />
-            <PlacesView places={this.state.places} />
+            <PlacesView
+              updateFavorites={this.updateFavorites}
+              places={this.state.places}
+            />
           </div>
         ) : (
-          <h1>Favorites List</h1>
+          <PlacesView
+            showAddToFavButton={false}
+            places={this.state.favorites}
+          />
         )}
       </div>
     );

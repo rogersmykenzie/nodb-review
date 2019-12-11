@@ -11,7 +11,7 @@ class PlacesView extends React.Component {
 
   addToFavorites(place) {
     axios.post("/api/favs", place).then(response => {
-      console.log(response);
+      this.props.updateFavorites(response.data);
     });
   }
 
@@ -29,12 +29,14 @@ class PlacesView extends React.Component {
                 src={element.imgUrl}
               />
               <h2>{element.rating}</h2>
-              <img
-                onClick={() => this.addToFavorites(element)}
-                className="place__heart"
-                alt="like_button"
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png"
-              />
+              {this.props.showAddToFavButton === false ? null : (
+                <img
+                  onClick={() => this.addToFavorites(element)}
+                  className="place__heart"
+                  alt="like_button"
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png"
+                />
+              )}
             </div>
           );
         })}

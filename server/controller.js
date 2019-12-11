@@ -16,8 +16,13 @@ function addPlace(req, res) {
 function getPlaces(req, res) {
   res.status(200).json(places);
 }
+function addToFavorites(req, res) {
+  favorites.push(req.body);
+  res.status(200).json(favorites);
+}
 
 module.exports = {
   addPlace,
-  getPlaces
+  getPlaces,
+  addToFavorites
 };

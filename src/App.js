@@ -11,7 +11,8 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      places: []
+      places: [],
+      currentView: "places"
     };
     this.updatePlaces = this.updatePlaces.bind(this);
   }

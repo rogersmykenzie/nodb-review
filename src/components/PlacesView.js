@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/PlacesView.css";
 
 class PlacesView extends React.Component {
   constructor() {
@@ -14,7 +15,7 @@ class PlacesView extends React.Component {
             <div>
               <h1>{element.place}</h1>
               <h2>{element.country}</h2>
-              <img src={element.imgUrl} />
+              <img className="place__image" src={element.imgUrl} />
               <h2>{element.rating}</h2>
             </div>
           );

@@ -28,10 +28,31 @@ class App extends React.Component {
   }
 
   render() {
+    // if (this.state.currentView === "places") {
+    //   return (
+    //     <div className="App">
+    //       <button>Favorites</button>
+    //       <button>Places</button>
+    //       <AddPlace updatePlaces={this.updatePlaces} />
+    //       <PlacesView places={this.state.places} />
+    //     </div>
+    //   );
+    // } else if (this.state.currentView === "favs") {
+    //   // return <PlacesView />;
+    //   return <h1>Favorites List</h1>;
+    // }
     return (
-      <div className="App">
-        <AddPlace updatePlaces={this.updatePlaces} />
-        <PlacesView places={this.state.places} />
+      <div>
+        <button>Favorites</button>
+        <button>Places</button>
+        {this.state.currentView === "places" ? (
+          <div className="App">
+            <AddPlace updatePlaces={this.updatePlaces} />
+            <PlacesView places={this.state.places} />
+          </div>
+        ) : (
+          <h1>Favorites List</h1>
+        )}
       </div>
     );
   }

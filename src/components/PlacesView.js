@@ -17,18 +17,15 @@ class PlacesView extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="places__container">
         {this.props.places.map(element => {
+          const { place, country, imgUrl, rating } = element;
           return (
-            <div>
-              <h1>{element.place}</h1>
-              <h2>{element.country}</h2>
-              <img
-                alt="place_image"
-                className="place__image"
-                src={element.imgUrl}
-              />
-              <h2>{element.rating}</h2>
+            <div className="places__card">
+              <h1>{place}</h1>
+              <h2>{country}</h2>
+              <img alt="place_image" className="place__image" src={imgUrl} />
+              <h2>{"⭐".repeat(rating) + "★".repeat(10 - rating)}</h2>
               {this.props.showAddToFavButton === false ? null : (
                 <img
                   onClick={() => this.addToFavorites(element)}

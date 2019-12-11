@@ -1,0 +1,14 @@
+.add_place__container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(44, 44, 44);
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+}
+.add_place__button {
+  /* width: 50%; */
+}
+input {
+  margin: 20px;
+}

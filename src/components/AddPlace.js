@@ -9,7 +9,11 @@ class AddPlace extends React.Component {
   render() {
     return (
       <div>
-        <h1>AddPlace</h1>
+        <input placeholder="Place" />
+        <input placeholder="Country" />
+        <input placeholder="Rating" />
+        <input placeholder="Image URL" />
+        <button>Add</button>
       </div>
     );
   }

@@ -38,7 +38,7 @@ class AddPlace extends React.Component {
       imgUrl
     };
     axios.post("/api/places", body).then(response => {
-      console.log(response);
+      this.props.updatePlaces(response.data);
     });
   }
 

@@ -13,6 +13,7 @@ class App extends React.Component {
     this.state = {
       places: []
     };
+    this.updatePlaces = this.updatePlaces.bind(this);
   }
 
   componentDidMount() {
@@ -21,11 +22,15 @@ class App extends React.Component {
     });
   }
 
+  updatePlaces(newPlaces) {
+    this.setState({ places: newPlaces });
+  }
+
   render() {
     return (
       <div className="App">
-        <AddPlace />
-        <PlacesView />
+        <AddPlace updatePlaces={this.updatePlaces} />
+        <PlacesView places={this.state.places} />
       </div>
     );
   }

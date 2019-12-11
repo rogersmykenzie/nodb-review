@@ -1,0 +1,2 @@
+let places = [];
+let favorites = [];
